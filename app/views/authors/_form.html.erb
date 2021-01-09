@@ -1,0 +1,31 @@
+<%= form_for @author , class: 'form-horizontal' do |f| %>
+  <div class="row form-group">
+    <div class="col-md-2 remove-right-padding">
+      <%= f.label :f_name, "Enter First Name"%>
+    </div>
+    <div class="col-md-3 remove-left-padding">
+      <%= f.text_field :f_name, class: "form-control", required:true %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-md-2 remove-right-padding">
+      <%= f.label :l_name, "Enter Last Name" %>
+    </div>
+    <div class="col-md-3 remove-left-padding">
+      <%= f.text_field :l_name, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-md-2 remove-right-padding">
+      <%= f.label :dob, "Enter Dob"%>
+    </div>
+    <div class="col-md-3 remove-left-padding">
+      <%= f.text_field :dob, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-md-4">
+      <%= submit_tag "Submit", class: "btn btn-primary btn-lg mg10"%>
+    </div>
+  </div>
+<% end %>

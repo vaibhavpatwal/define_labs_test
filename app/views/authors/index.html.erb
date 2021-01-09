@@ -1,0 +1,40 @@
+<div class="text-center">>
+  <h1>This the list of Authors</h1> 
+  <% if @authors.count > 0%>
+    <%= link_to "Add Author", new_author_path, class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+<div style="width:70%; margin:auto">
+  <% if @authors.count > 0 %>
+    <table class="dashboard-table table" data-toggle="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Date of Birth</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @authors.each do |author|%>
+            <tr>
+              <td>
+                <%= author.full_name %>
+              </td>
+              <td><%= author.dob.present? ? (author.dob) : "-" %></td>
+              <td>
+                <%=link_to "Edit", edit_author_path(author), data: { turbolinks: false } %> | <%=link_to "Destroy", author_path(author), method: :delete, data: { confirm: "Are you sure?" } %> 
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <div class="text-center">
+      <h2>No Authors Avaliable</h2>
+      <br>
+      <td><%= link_to "Add Author", new_author_path, class: "btn btn-primary" %></td>
+    </div>
+  <% end %>
+</div>

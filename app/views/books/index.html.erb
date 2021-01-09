@@ -1,0 +1,36 @@
+<div class="text-center">
+  <h1>This the list of Books</h1> 
+  <% if @books.count > 0 %>
+    <%= link_to "Add Book", new_book_path, class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+<div style="width:70%; margin:auto">
+  <% if @books.count > 0%>
+    <table class="dashboard-table table" data-toggle="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% @books.each do |book|%>
+              <tr>
+                <td><%= book.title %></td>
+                <td>
+                  <%=link_to "Edit", edit_book_path(book), data: { turbolinks: false } %> | <%= link_to 'Destroy', book_path(book), method: :delete, data: { confirm: "Are you sure?" } %>
+                </td>
+              </tr>
+            <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <div class="text-center">
+      <h2>No Books Avaliable</h2>
+      <br>
+      <%= link_to "Add Book", new_book_path, class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,24 @@
+<%= form_for @book , class: 'form-horizontal' do |f| %>
+  <div class="row form-group">
+    <div class="col-md-2 remove-right-padding">
+      <%= f.label :title, "Enter Title"%>
+    </div>
+    <div class="col-md-3 remove-left-padding">
+      <%= f.text_field :title, class: "form-control", required:true %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-md-3 remove-left-padding">
+      <%= f.label :authors %><br />
+      <% for author in Author.all %>
+        <%= check_box_tag "book[author_ids][]", author.id, @book.authors.include?(author) %>
+        <%=h author.full_name %><br />
+      <% end %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-md-4">
+      <%= submit_tag "Submit", class: "btn btn-primary btn-lg mg10"%>
+    </div>
+  </div>
+<% end %>
